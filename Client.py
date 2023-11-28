@@ -1,5 +1,6 @@
 # Rusn on PC, directly from Thonny
 # The client
+# Brendan McBride
 
 import socket
 s = socket.socket()
