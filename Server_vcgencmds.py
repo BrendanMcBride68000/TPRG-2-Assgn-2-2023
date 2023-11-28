@@ -29,6 +29,11 @@ def pi_cpuvoltage():
     # Defines the CPU voltage
     cpuv = os.popen('vcgencmd measure_volts').readline()
     return cpuv.strip()
+
+def pi_cpufrequency():
+    # Defines the CPU throttling status
+    cpuf = os.popen('vcgencmd measure_clock arm').readline()
+    return cpuf.strip()
     
 while True:
   c, addr = s.accept()
@@ -38,12 +43,14 @@ while True:
   temperature = pi_temperature()
   memory = pi_memoryusage()
   voltage = pi_cpuvoltage()
+  cpuclock = pi_cpufrequency()
   
   # JSON object that contains the collected data
   data = {
       "Temperature": temperature,
       "Memory usage": memory,
-      "CPU voltage": voltage
+      "CPU voltage": voltage,
+      "CPU frequency": cpuclock
   }
 
   res = bytes(json.dumps(data), 'utf-8') # needs to be a byte
