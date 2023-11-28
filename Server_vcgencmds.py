@@ -25,6 +25,11 @@ def pi_memoryusage():
     m = os.popen('vcgencmd get_mem arm').readline()
     return m.strip()
 
+def pi_cpuvoltage():
+    # Defines the CPU voltage
+    cpuv = os.popen('vcgencmd measure_volts').readline()
+    return cpuv.strip()
+    
 while True:
   c, addr = s.accept()
   print ('Got connection from',addr)
@@ -32,11 +37,13 @@ while True:
   # Collects the data from the Pi
   temperature = pi_temperature()
   memory = pi_memoryusage()
+  voltage = pi_cpuvoltage()
   
   # JSON object that contains the collected data
   data = {
       "Temperature": temperature,
-      "Memory usage": memory
+      "Memory usage": memory,
+      "CPU voltage": voltage
   }
 
   res = bytes(json.dumps(data), 'utf-8') # needs to be a byte
