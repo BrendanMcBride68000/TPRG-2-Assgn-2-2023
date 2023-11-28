@@ -10,7 +10,7 @@ import os, time
 import json
 
 s = socket.socket()
-host = '' # Localhost
+host = '10.102.13.210' # Localhost
 port = 5000
 s.bind((host, port))
 s.listen(5)
