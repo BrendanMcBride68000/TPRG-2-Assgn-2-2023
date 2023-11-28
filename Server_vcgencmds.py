@@ -3,6 +3,7 @@
 # details of the Pi's vcgencmds - https://www.tomshardware.com/how-to/raspberry-pi-benchmark-vcgencmd
 # more vcgens on Pi 4, https://forums.raspberrypi.com/viewtopic.php?t=245733
 # more of these at https://www.nicm.dev/vcgencmd/
+# Brendan McBride
 
 import socket
 import os, time
